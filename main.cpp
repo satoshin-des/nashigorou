@@ -32,7 +32,7 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	nashigorou TitleApple;
 	button StartButton;						// 開始ボタン
 	button EndButton;						// 終了ボタン
-	button RepeatButton;
+	button RepeatButton;					// もう一度ボタン
 	double r;
 	double theta = 0.0;
 	double TimeCount = 0.0;

@@ -2,7 +2,7 @@
 
 #include <DxLib.h>
 
-#define WHITE 255, 255, 255
+#include "core.h"
 
 class button
 {

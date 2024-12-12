@@ -1,9 +1,7 @@
 #pragma once
 
 #include <DxLib.h>
-
-#define WIDTH_X 800
-#define WIDTH_Y 600
+#include "core.h"
 
 class back_ground
 {

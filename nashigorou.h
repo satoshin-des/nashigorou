@@ -1,6 +1,7 @@
 #pragma once
 
 #include <DxLib.h>
+#include "core.h"
 
 class nashigorou
 {

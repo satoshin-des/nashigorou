@@ -35,9 +35,21 @@ public:
 	/// <summary>
 	/// 画像の描画（動く）
 	/// </summary>
-	void DrawImage() {
+	void DrawImage(bool IsMovable) {
+		if (IsMovable) {
+			GetMousePoint(&X, &Y);
+			DrawExtendGraph(X, Y, 550, 450, g, TRUE);
+		}
+		else {
+			DrawExtendGraph(X, Y, 550, 450, g, TRUE);
+		}
+	}
+
+	/// <summary>
+	/// 最終的なりんごろうの座標を決定する
+	/// </summary>
+	void DecideCoordinate() {
 		GetMousePoint(&X, &Y);
-		DrawExtendGraph(X, Y, 550, 450, g, TRUE);
 	}
 
 	/// <summary>

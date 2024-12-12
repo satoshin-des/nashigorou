@@ -10,7 +10,7 @@ public:
 	/// ”wŒi‚Ì•`‰æ
 	/// </summary>
 	void DrawBackGround() {
-		unsigned int color = GetColor(137, 195, 221);
+		unsigned int color = GetColor(SKY_COLOR);
 		DrawBox(0, 0, WIDTH_X, WIDTH_Y, color, TRUE);
 	}
 };

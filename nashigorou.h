@@ -44,7 +44,11 @@ public:
 	/// </summary>
 	/// <param name="ratio">å©ñ{ÇÃècâ°î‰</param>
 	void DrawRatio(double ratio) {
-		unsigned int Color = GetColor(255, 255, 255);
-		DrawFormatString(0, 0, Color, "%lfÅì\n", (fabs(550.0 - X) / fabs(450.0 - Y)) * ratio * 100);
+		unsigned int Color = GetColor(0, 0, 0);
+
+		double r1 = (fabs(550.0 - X) / fabs(450.0 - Y)) * ratio * 100, r2 = 10000.0 / r1, r;
+		r = r1 < r2 ? r1 : r2;
+
+		DrawFormatString(0, 0, Color, "%lfÅì\n", r);
 	}
 };

@@ -1,9 +1,10 @@
 #include <iostream>
-#include <time.h>
+#include <random>
 
 #include <DxLib.h>
 #include "nashigorou.h"
 #include "back_ground.h"
+#include "button.h"
 
 
 int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -15,29 +16,47 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return -1;
 	}
 
-	ChangeWindowMode(TRUE);
-	SetWindowSize(WIDTH_X, WIDTH_Y);
 
-	back_ground BACK_GROUND;
-	nashigorou APPLE_MIHON;
-	nashigorou APPLE;
+	SetFontSize(20);						// フォントサイズを変更
+	SetMouseDispFlag(TRUE);					// マウスを表示状態にする
+	ChangeWindowMode(TRUE);					// ウィンドウモード
+	SetWindowSize(WIDTH_X, WIDTH_Y);		// ウィンドウサイズ
+
+	back_ground BACK_GROUND;				// 背景
+	nashigorou APPLE_MIHON;					// 見本のりんごろう
+	nashigorou APPLE;						// 自機のりんごろう
+	button StartButton;						// 開始ボタン
+	button EndButton;						// 終了ボタン
 	double r;
-
-	srand((long long int)time(nullptr));
-	r = ((double)rand() + 1.0) / RAND_MAX; // 大きさの比率
-
-	APPLE_MIHON.LoadImage("ringorou.png");
-	APPLE.LoadImage("ringorou.png");
+	std::random_device seed_gen;
+	std::mt19937_64 engine(seed_gen());
+	std::uniform_real_distribution<double> dist(0.2, 0.7);
 
 	
 	// タイトル画面
+	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
+		StartButton.Draw(100, 350, 250, 400);
+		StartButton.Text("はじめる", 30, 13);
+		if (StartButton.IsClick()) {
+			break;
+		}
+
+		EndButton.Draw(400, 350, 550, 400);
+		EndButton.Text("おわる", 30, 13);
+		if (EndButton.IsClick()) {
+			return 0;
+		}
+	}
+
+	r = dist(engine);
+	APPLE_MIHON.LoadImage("ringorou.png");
+	APPLE.LoadImage("ringorou.png");
 
 	// メインゲーム
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
 		BACK_GROUND.DrawBackGround();
 		APPLE_MIHON.DrawImage(400, 0, r);
 		APPLE.DrawImage();
-
 		APPLE.DrawRatio(r);
 	}
 

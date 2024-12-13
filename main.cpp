@@ -1,6 +1,4 @@
 #include <iostream>
-#include <random>
-#include <corecrt_math_defines.h>
 
 #include <DxLib.h>
 
@@ -9,8 +7,6 @@
 #include "back_ground.h"
 #include "button.h"
 #include "core.h"
-
-//#define _USE_MATH_DEFINES
 
 int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	if (DxLib_Init() == -1) {
@@ -26,13 +22,16 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	int GAME_FLAG = __INIT__;
 	
 	while (true) {
+		/*
 		if (GAME_FLAG == __INIT__) {
+			GAME_FLAG = __START__;
 			GAME_FLAG = Title();
 			if (GAME_FLAG == __END__) {
 				return 0;
 			}
 		}
-
+		*/
+		GAME_FLAG = Title();
 		GAME_FLAG = MainGame();
 	}
 

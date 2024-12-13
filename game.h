@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <random>
 
 #include <DxLib.h>
 #include <corecrt_math_defines.h>

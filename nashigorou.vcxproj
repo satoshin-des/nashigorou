@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="button.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="back_ground.h" />
     <ClInclude Include="button.h" />
     <ClInclude Include="core.h" />
+    <ClInclude Include="game.h" />
     <ClInclude Include="nashigorou.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

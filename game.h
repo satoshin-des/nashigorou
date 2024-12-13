@@ -95,8 +95,10 @@ int MainGame() {
 		EndButton.Draw(400, 350, 550, 400);
 		EndButton.Text("‚¨‚í‚é", 45, 13);
 		if (EndButton.IsClick()) {
-			DxLib_End();
+			WaitTimer(500);
 			return __END__;
 		}
+
+		WaitTimer(FPS60);
 	}
 }

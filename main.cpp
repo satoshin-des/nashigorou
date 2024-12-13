@@ -21,8 +21,7 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	int GAME_FLAG = __INIT__;
 	
-	while (true) {
-		/*
+	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
 		if (GAME_FLAG == __INIT__) {
 			GAME_FLAG = __START__;
 			GAME_FLAG = Title();
@@ -30,7 +29,6 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				return 0;
 			}
 		}
-		*/
 		GAME_FLAG = Title();
 		GAME_FLAG = MainGame();
 	}

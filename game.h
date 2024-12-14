@@ -17,6 +17,14 @@
 /// <returns>状態</returns>
 int Title();
 
+/// <summary>
+/// ゲームのメイン画面
+/// </summary>
+/// <returns>状態</returns>
 int MainGame();
 
+/// <summary>
+/// クレジットの画面
+/// </summary>
+/// <returns>状態</returns>
 int Credit();

@@ -8,7 +8,10 @@ int Title() {
 	button EndButton;						// I—¹ƒ{ƒ^ƒ“
 	button CreditButton;
 
-	TitleApple.LoadImage("ringorou.png");
+	TitleApple.LoadImage(RINGOROU_IMAGE_PATH);
+
+	StopSoundFile();
+	PlaySoundFile(TITLE_BGM, DX_PLAYTYPE_LOOP);
 
 	LOOP {
 		BACK_GROUND.DrawBackGround();
@@ -61,8 +64,11 @@ int MainGame() {
 
 	TimeCount = 0.0;
 	r = dist(engine);
-	APPLE_MIHON.LoadImage("ringorou.png");
-	APPLE.LoadImage("ringorou.png");
+	APPLE_MIHON.LoadImage(RINGOROU_IMAGE_PATH);
+	APPLE.LoadImage(RINGOROU_IMAGE_PATH);
+
+	StopSoundFile();
+	PlaySoundFile(GAME_BGM, DX_PLAYTYPE_LOOP);
 
 	LOOP {
 		if (TimeCount >= 600) {

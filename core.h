@@ -6,6 +6,10 @@
 
 #define TITLE "ÇËÇÒÇ≤ÇÎÇ§ÇÃî‰çáÇÌÇπÉQÅ[ÉÄ"
 
+#define RINGOROU_IMAGE_PATH "img/ringorou.png"
+#define TITLE_BGM "bgm/01.wav"
+#define GAME_BGM "bgm/02.wav"
+
 #define _TITLE_FONT_SIZE_ 40
 #define _BUTTON_FONT_SIZE_ 20
 

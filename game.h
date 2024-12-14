@@ -11,6 +11,10 @@
 #include "button.h"
 #include "core.h"
 
+/// <summary>
+/// ƒ^ƒCƒgƒ‹‚Ì§Œä
+/// </summary>
+/// <returns>ó‘Ô</returns>
 int Title();
 
 int MainGame();

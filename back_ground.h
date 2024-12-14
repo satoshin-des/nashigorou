@@ -9,8 +9,5 @@ public:
 	/// <summary>
 	/// ”wŒi‚Ì•`‰æ
 	/// </summary>
-	void DrawBackGround() {
-		unsigned int color = GetColor(SKY_COLOR);
-		DrawBox(0, 0, WIDTH_X, WIDTH_Y, color, TRUE);
-	}
+	void DrawBackGround();
 };

@@ -6,13 +6,17 @@ int Title() {
 	nashigorou TitleApple;
 	button StartButton;						// 開始ボタン
 	button EndButton;						// 終了ボタン
+	button CreditButton;
 
 	TitleApple.LoadImage("ringorou.png");
 
-	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
+	LOOP {
 		BACK_GROUND.DrawBackGround();
 
 		TitleApple.DrawImage(100 * cos(theta), 100 * sin(theta), 1);
+		
+		SetFontSize(_TITLE_FONT_SIZE_);
+		DrawFormatString(10, 10, GetColor(0, 0, 0), TITLE);
 
 		StartButton.Draw(100, 350, 250, 400);
 		StartButton.Text("はじめる", 30, 13);
@@ -23,8 +27,13 @@ int Title() {
 		EndButton.Draw(400, 350, 550, 400);
 		EndButton.Text("おわる", 45, 13);
 		if (EndButton.IsClick()) {
-			DxLib_End();
-			return __END__;
+			return __GAME_END__;
+		}
+
+		CreditButton.Draw(500, 420, 600, 470);
+		CreditButton.Text("ｸﾚｼﾞｯﾄ", 20, 13);
+		if (CreditButton.IsClick()) {
+			return __CREDIT__;
 		}
 
 		theta += M_PI * 0.03490658503;
@@ -55,7 +64,11 @@ int MainGame() {
 	APPLE_MIHON.LoadImage("ringorou.png");
 	APPLE.LoadImage("ringorou.png");
 
-	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && TimeCount < 600) {
+	LOOP {
+		if (TimeCount >= 600) {
+			break;
+		}
+
 		BACK_GROUND.DrawBackGround();
 		APPLE_MIHON.DrawImage(400, 0, r);
 		APPLE.DrawImage(true);
@@ -69,19 +82,20 @@ int MainGame() {
 	// 最終的な座標を決める
 	APPLE.DecideCoordinate();
 
-	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
+	LOOP {
 		BACK_GROUND.DrawBackGround();
 		APPLE_MIHON.DrawImage(400, 0, r);
 		APPLE.DrawImage(false);
 		APPLE.DrawRatio(r);
 
-		RepeatButton.Draw(100, 350, 250, 400);
+		RepeatButton.Draw(100, 250, 250, 300);
 		RepeatButton.Text("もう一度", 30, 13);
 		if (RepeatButton.IsClick()) {
+			WaitTimer(500);
 			return __REPEAT__;
 		}
 
-		EndButton.Draw(400, 350, 550, 400);
+		EndButton.Draw(100, 350, 250, 400);
 		EndButton.Text("おわる", 45, 13);
 		if (EndButton.IsClick()) {
 			WaitTimer(500);
@@ -89,5 +103,21 @@ int MainGame() {
 		}
 
 		WaitTimer(FPS60);
+	}
+}
+
+int Credit() {
+	button EndButton;
+	back_ground BACK_GROUND;
+
+	LOOP{
+		BACK_GROUND.DrawBackGround();
+		
+		EndButton.Draw(325, 350, 475, 400);
+		EndButton.Text("タイトル", 45, 13);
+		if (EndButton.IsClick()) {
+			WaitTimer(500);
+			return __END__;
+		}
 	}
 }

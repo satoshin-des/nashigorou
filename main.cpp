@@ -13,24 +13,36 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return -1;
 	}
 
-	SetMainWindowText("りんごろうの比合わせゲーム");			// ゲームタイトル
-	SetFontSize(20);											// フォントサイズを変更
-	SetMouseDispFlag(TRUE);										// マウスを表示状態にする
-	ChangeWindowMode(TRUE);										// ウィンドウモード
-	SetWindowSize(WIDTH_X, WIDTH_Y);							// ウィンドウサイズ
+	SetMainWindowText(TITLE);				// ゲームタイトル
+	SetFontSize(20);						// フォントサイズを変更
+	SetMouseDispFlag(TRUE);					// マウスを表示状態にする
+	ChangeWindowMode(TRUE);					// ウィンドウモード
+	SetWindowSize(WIDTH_X, WIDTH_Y);		// ウィンドウサイズ
+	SetDrawScreen(DX_SCREEN_BACK);			// ダブルバッファリング
 
 	int GAME_FLAG = __INIT__;
 	
-	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
-		if (GAME_FLAG == __INIT__) {
-			GAME_FLAG = __START__;
+	while(true) {
+		switch (GAME_FLAG) {
+		case __INIT__:
 			GAME_FLAG = Title();
-			if (GAME_FLAG == __END__) {
-				return 0;
-			}
+			break;
+
+		case __CREDIT__:
+			GAME_FLAG = Credit();
+			break;
+
+		case __START__:
+			GAME_FLAG = MainGame();
+			break;
+
+		case __REPEAT__:
+			GAME_FLAG = MainGame();
+			break;
+
+		case __GAME_END__:
+			return 0;
 		}
-		GAME_FLAG = Title();
-		GAME_FLAG = MainGame();
 	}
 
 	DxLib_End();

@@ -14,6 +14,12 @@ private:
 	int MouseX;
 	int MouseY;
 
+	/// <summary>
+	/// マウスカーソルがボタンの領域内に入っているかどうか
+	/// </summary>
+	/// <returns>マウスカーソルがボタンに振ればtrue，そうでないときはfalse</returns>
+	bool IsOnButton();
+
 public:
 	/// <summary>
 	/// ボタンの描画
@@ -38,4 +44,3 @@ public:
 	/// <returns>ボタンがクリックされたらtrue，そうでなければfalse</returns>
 	bool IsClick();
 };
-

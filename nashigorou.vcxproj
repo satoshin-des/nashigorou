@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="back_ground.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="core.cpp" />
     <ClCompile Include="game.cpp" />
@@ -151,6 +152,9 @@
     <ClInclude Include="core.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="nashigorou.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

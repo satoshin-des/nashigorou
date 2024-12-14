@@ -18,3 +18,5 @@
 int Title();
 
 int MainGame();
+
+int Credit();

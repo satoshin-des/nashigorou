@@ -113,6 +113,17 @@ int Credit() {
 	LOOP{
 		BACK_GROUND.DrawBackGround();
 		
+		SetFontSize(40);
+		DrawFormatString(10, 3, GetColor(0, 0, 0), "クレジット");
+
+		SetFontSize(20);
+		DrawFormatString(10, 50, GetColor(0, 0, 0), "■使用楽曲");
+		DrawFormatString(10, 50, GetColor(0, 0, 0), "\n　バチ様「たべるんごのうた」");
+		DrawFormatString(10, 50, GetColor(0, 0, 0), "\n\n　URL: https://www.nicovideo.jp/watch/sm36210300");
+		DrawFormatString(10, 50, GetColor(0, 0, 0), "\n\n\n■使用音源");
+		DrawFormatString(10, 50, GetColor(0, 0, 0), "\n\n\n\n　ひやめし様「GB音源「Hiyameshi-DMG」」");
+		DrawFormatString(10, 50, GetColor(0, 0, 0), "\n\n\n\n\n　URL: https://hiyameshi8bit.booth.pm/items/4710188");
+		
 		EndButton.Draw(325, 350, 475, 400);
 		EndButton.Text("タイトル", 45, 13);
 		if (EndButton.IsClick()) {

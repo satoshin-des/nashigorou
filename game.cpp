@@ -4,9 +4,9 @@ int Title() {
 	double theta = 0.0;
 	back_ground BACK_GROUND;
 	nashigorou TitleApple;
-	button StartButton;						// 開始ボタン
-	button EndButton;						// 終了ボタン
-	button CreditButton;
+	button StartButton;				// 開始ボタン
+	button EndButton;				// 終了ボタン
+	button CreditButton;			// クレジット表示ボタン
 
 	TitleApple.LoadImage(RINGOROU_IMAGE_PATH);
 

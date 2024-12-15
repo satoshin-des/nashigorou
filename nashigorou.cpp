@@ -31,6 +31,7 @@ void nashigorou::DrawRatio(double ratio) {
 
 	double r1 = (fabs(550.0 - X) / fabs(450.0 - Y)) * ratio * 100, r2 = 10000.0 / r1, r;
 	r = r1 < r2 ? r1 : r2;
-
-	DrawFormatString(0, 0, Color, "%lf“\n", r);
+	
+	SetFontSize(28);
+	DrawFormatString(0, 0, Color, "Ž—‚Ä‚é—¦F%lf“\n", r);
 }

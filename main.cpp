@@ -13,6 +13,7 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return -1;
 	}
 
+	SetOutApplicationLogValidFlag(FALSE);	// ログファイルを出力しない
 	SetMainWindowText(TITLE);				// ゲームタイトル
 	SetFontSize(20);						// フォントサイズを変更
 	SetMouseDispFlag(TRUE);					// マウスを表示状態にする

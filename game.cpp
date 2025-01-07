@@ -90,7 +90,7 @@ int MainGame() {
 
 	while(ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
 		background.DrawBackGround();
-		sample_nashigorou.DrawImage(400, 0, r);
+		sample_nashigorou.DrawImage(WIDTH_X - 300, 0, r);
 		player_nashigorou.DrawImage(false);
 		player_nashigorou.DrawRatio(r);
 

@@ -29,7 +29,7 @@ void nashigorou::DecideCoordinate() {
 void nashigorou::DrawRatio(double aspect_ratio) {
 	unsigned int text_color = GetColor(0, 0, 0);
 
-	double temp_similarity_rate1 = (fabs(550.0 - m_x) / fabs(450.0 - m_y)) * aspect_ratio * 100, temp_similarity_rate2 = 10000.0 / temp_similarity_rate1;
+	double temp_similarity_rate1 = (fabs(WIDTH_X - 20 - m_x) / fabs(WIDTH_Y - 20 - m_y)) * aspect_ratio * 100, temp_similarity_rate2 = 10000.0 / temp_similarity_rate1;
 	double similarity_rate;
 	similarity_rate = temp_similarity_rate1 < temp_similarity_rate2 ? temp_similarity_rate1 : temp_similarity_rate2;
 	

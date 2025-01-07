@@ -2,41 +2,41 @@
 
 int Title() {
 	double theta = 0.0;
-	back_ground BACK_GROUND;
-	nashigorou TitleApple;
-	button StartButton;				// 開始ボタン
-	button EndButton;				// 終了ボタン
-	button CreditButton;			// クレジット表示ボタン
+	back_ground background;
+	nashigorou nashigorou_on_title;
+	button start_button;				// 開始ボタン
+	button quit_button;					// 終了ボタン
+	button credit_button;				// クレジット表示ボタン
 
-	TitleApple.LoadImage(RINGOROU_IMAGE_PATH);
+	nashigorou_on_title.LoadImage(RINGOROU_IMAGE_PATH);
 
 	StopSoundFile();
 	PlaySoundFile(TITLE_BGM, DX_PLAYTYPE_LOOP);
 
-	LOOP {
-		BACK_GROUND.DrawBackGround();
+	while(ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
+		background.DrawBackGround();
 
-		TitleApple.DrawImage(100 * cos(theta), 100 * sin(theta), 1);
+		nashigorou_on_title.DrawImage(100 * cos(theta), 100 * sin(theta), 1);
 		
-		SetFontSize(_TITLE_FONT_SIZE_);
+		SetFontSize(TITLE_FONT_SIZE);
 		DrawFormatString(10, 10, GetColor(0, 0, 0), TITLE);
 
-		StartButton.Draw(100, 350, 250, 400);
-		StartButton.Text("はじめる", 30, 13);
-		if (StartButton.IsClick()) {
-			return __START__;
+		start_button.Draw(100, 350, 250, 400);
+		start_button.Text("はじめる", 30, 13);
+		if (start_button.IsClick()) {
+			return START_SCREEN;
 		}
 
-		EndButton.Draw(400, 350, 550, 400);
-		EndButton.Text("おわる", 45, 13);
-		if (EndButton.IsClick()) {
-			return __GAME_END__;
+		quit_button.Draw(400, 350, 550, 400);
+		quit_button.Text("おわる", 45, 13);
+		if (quit_button.IsClick()) {
+			return GAME_END;
 		}
 
-		CreditButton.Draw(500, 420, 600, 470);
-		CreditButton.Text("ｸﾚｼﾞｯﾄ", 20, 13);
-		if (CreditButton.IsClick()) {
-			return __CREDIT__;
+		credit_button.Draw(500, 420, 600, 470);
+		credit_button.Text("ｸﾚｼﾞｯﾄ", 20, 13);
+		if (credit_button.IsClick()) {
+			return CREDIT_SCREEN;
 		}
 
 		theta += M_PI * 0.03490658503;
@@ -50,62 +50,62 @@ int Title() {
 
 
 int MainGame() {
-	nashigorou APPLE_MIHON;					// 見本のりんごろう
-	nashigorou APPLE;						// 自機のりんごろう
-	button EndButton;						// 終了ボタン
-	button RepeatButton;					// もう一度ボタン
-	back_ground BACK_GROUND;
+	nashigorou sample_nashigorou;					// 見本のりんごろう
+	nashigorou player_nashigorou;						// 自機のりんごろう
+	button quit_button;						// 終了ボタン
+	button repeat_button;					// もう一度ボタン
+	back_ground background;
 	double r;
-	double TimeCount;
-	unsigned int CounterColor = GetColor(BLACK);
+	double time_counter;
+	unsigned int time_counter_color = GetColor(BLACK);
 	std::random_device seed_gen;
 	std::mt19937_64 engine(seed_gen());
 	std::uniform_real_distribution<double> dist(0.2, 0.7);
 
-	TimeCount = 0.0;
+	time_counter = 0.0;
 	r = dist(engine);
-	APPLE_MIHON.LoadImage(RINGOROU_IMAGE_PATH);
-	APPLE.LoadImage(RINGOROU_IMAGE_PATH);
+	sample_nashigorou.LoadImage(RINGOROU_IMAGE_PATH);
+	player_nashigorou.LoadImage(RINGOROU_IMAGE_PATH);
 
 	StopSoundFile();
 	PlaySoundFile(GAME_BGM, DX_PLAYTYPE_LOOP);
 
-	LOOP {
-		if (TimeCount >= 600) {
+	while(ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
+		if (time_counter >= 600) {
 			break;
 		}
 
-		BACK_GROUND.DrawBackGround();
-		APPLE_MIHON.DrawImage(400, 0, r);
-		APPLE.DrawImage(true);
+		background.DrawBackGround();
+		sample_nashigorou.DrawImage(400, 0, r);
+		player_nashigorou.DrawImage(true);
 
-		DrawFormatString(0, 0, CounterColor, "残り時間：%lf\n", 10.0 - TimeCount / 60.0);
+		DrawFormatString(0, 0, time_counter_color, "残り時間：%lf\n", 10.0 - time_counter / 60.0);
 
-		++TimeCount;
+		++time_counter;
 		WaitTimer(FPS60);
 	}
 
 	// 最終的な座標を決める
-	APPLE.DecideCoordinate();
+	player_nashigorou.DecideCoordinate();
 
-	LOOP {
-		BACK_GROUND.DrawBackGround();
-		APPLE_MIHON.DrawImage(400, 0, r);
-		APPLE.DrawImage(false);
-		APPLE.DrawRatio(r);
+	while(ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
+		background.DrawBackGround();
+		sample_nashigorou.DrawImage(400, 0, r);
+		player_nashigorou.DrawImage(false);
+		player_nashigorou.DrawRatio(r);
 
-		RepeatButton.Draw(100, 250, 250, 300);
-		RepeatButton.Text("もう一度", 30, 13);
-		if (RepeatButton.IsClick()) {
+		repeat_button.Draw(100, 250, 250, 300);
+		repeat_button.Text("もう一度", 30, 13);
+		if (repeat_button.IsClick()) {
 			WaitTimer(500);
-			return __REPEAT__;
+			return REPEAT_GAME;
 		}
 
-		EndButton.Draw(100, 350, 250, 400);
-		EndButton.Text("おわる", 45, 13);
-		if (EndButton.IsClick()) {
+		quit_button.Draw(100, 350, 250, 400);
+		quit_button.Text("おわる", 45, 13);
+		if (quit_button.IsClick()) {
 			WaitTimer(500);
-			return __END__;
+			return GAME_QUIT;
 		}
 
 		WaitTimer(FPS60);
@@ -113,11 +113,11 @@ int MainGame() {
 }
 
 int Credit() {
-	button EndButton;
-	back_ground BACK_GROUND;
+	button quit_button;
+	back_ground background;
 
-	LOOP{
-		BACK_GROUND.DrawBackGround();
+	while(ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0){
+		background.DrawBackGround();
 		
 		SetFontSize(40);
 		DrawFormatString(10, 3, GetColor(0, 0, 0), "クレジット");
@@ -130,11 +130,11 @@ int Credit() {
 		DrawFormatString(10, 50, GetColor(0, 0, 0), "\n\n\n\n　ひやめし様「GB音源「Hiyameshi-DMG」」");
 		DrawFormatString(10, 50, GetColor(0, 0, 0), "\n\n\n\n\n　URL: https://hiyameshi8bit.booth.pm/items/4710188");
 		
-		EndButton.Draw(325, 350, 475, 400);
-		EndButton.Text("タイトル", 45, 13);
-		if (EndButton.IsClick()) {
+		quit_button.Draw(325, 350, 475, 400);
+		quit_button.Text("タイトル", 45, 13);
+		if (quit_button.IsClick()) {
 			WaitTimer(500);
-			return __END__;
+			return GAME_QUIT;
 		}
 	}
 }

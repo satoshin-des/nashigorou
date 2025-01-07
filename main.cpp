@@ -18,30 +18,31 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetFontSize(20);						// フォントサイズを変更
 	SetMouseDispFlag(TRUE);					// マウスを表示状態にする
 	ChangeWindowMode(TRUE);					// ウィンドウモード
+	SetGraphMode(WIDTH_X, WIDTH_Y, 32);
 	SetWindowSize(WIDTH_X, WIDTH_Y);		// ウィンドウサイズ
 	SetDrawScreen(DX_SCREEN_BACK);			// ダブルバッファリング
 
-	int GAME_FLAG = __INIT__;
+	int current_game_state = INITIAL_SCREEN;
 	
 	while(true) {
-		switch (GAME_FLAG) {
-		case __INIT__:
-			GAME_FLAG = Title();
+		switch (current_game_state) {
+		case INITIAL_SCREEN:
+			current_game_state = Title();
 			break;
 
-		case __CREDIT__:
-			GAME_FLAG = Credit();
+		case CREDIT_SCREEN:
+			current_game_state = Credit();
 			break;
 
-		case __START__:
-			GAME_FLAG = MainGame();
+		case START_SCREEN:
+			current_game_state = MainGame();
 			break;
 
-		case __REPEAT__:
-			GAME_FLAG = MainGame();
+		case REPEAT_GAME:
+			current_game_state = MainGame();
 			break;
 
-		case __GAME_END__:
+		case GAME_END:
 			return 0;
 		}
 	}

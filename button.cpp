@@ -1,8 +1,8 @@
 #include "button.h"
 
 bool button::IsOnButton() {
-	GetMousePoint(&MouseX, &MouseY);
-	if (startX <= MouseX && MouseX <= endX && startY <= MouseY && MouseY <= endY) {
+	GetMousePoint(&m_mouse_pointer_x, &m_mouse_pointer_y);
+	if (m_button_top_left_x <= m_mouse_pointer_x && m_mouse_pointer_x <= m_button_bottom_right_x && m_button_top_left_y <= m_mouse_pointer_y && m_mouse_pointer_y <= m_button_bottom_right_y) {
 		return true;
 	}
 	else {
@@ -10,22 +10,22 @@ bool button::IsOnButton() {
 	}
 }
 
-void button::Draw(int START_X, int START_Y, int END_X, int END_Y) {
-	startX = START_X; startY = START_Y; endX = END_X; endY = END_Y;
+void button::Draw(int button_top_left_x, int button_top_left_y, int button_bottom_right_x, int button_bottom_right_y) {
+	m_button_top_left_x = button_top_left_x; m_button_top_left_y = button_top_left_y; m_button_bottom_right_x = button_bottom_right_x; m_button_bottom_right_y = button_bottom_right_y;
 
 	unsigned int color;
 	color = IsOnButton() ? GetColor(PINK) : GetColor(WHITE);
-	DrawBox(START_X, START_Y, END_X, END_Y, color, TRUE);
+	DrawBox(button_top_left_x, button_top_left_y, button_bottom_right_x, button_bottom_right_y, color, TRUE);
 }
 
-void button::Text(const char* BUTTON_NAME, int dx, int dy) {
+void button::Text(const char* button_label_text, int dx, int dy) {
 	unsigned int color = GetColor(0, 0, 0);
-	SetFontSize(_BUTTON_FONT_SIZE_);
-	DrawFormatString(startX + dx, startY + dy, color, "%s\n", BUTTON_NAME);
+	SetFontSize(BUTTON_FONT_SIZE);
+	DrawFormatString(m_button_top_left_x + dx, m_button_top_left_y + dy, color, "%s\n", button_label_text);
 }
 
 bool button::IsClick() {
-	GetMousePoint(&MouseX, &MouseY);
+	GetMousePoint(&m_mouse_pointer_x, &m_mouse_pointer_y);
 	if (IsOnButton()) {
 		if (GetMouseInput() & MOUSE_INPUT_LEFT) {
 			return true;

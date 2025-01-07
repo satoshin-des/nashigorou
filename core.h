@@ -10,8 +10,8 @@
 #define TITLE_BGM "bgm/01.wav"
 #define GAME_BGM "bgm/02.wav"
 
-#define _TITLE_FONT_SIZE_ 40
-#define _BUTTON_FONT_SIZE_ 20
+#define TITLE_FONT_SIZE 40
+#define BUTTON_FONT_SIZE 20
 
 // êF
 #define WHITE 255, 255, 255
@@ -21,17 +21,14 @@
 
 #define FPS60 16.666666666666666666666666666666666666666666666666666667
 
-#define __INIT__ 0
-#define __START__ 1
-#define __END__ 0
-#define __REPEAT__ 2
-#define __CREDIT__ 3
-#define __GAME_END__ -1
+#define INITIAL_SCREEN 0
+#define START_SCREEN 1
+#define GAME_QUIT 0
+#define REPEAT_GAME 2
+#define CREDIT_SCREEN 3
+#define GAME_END -1
 
-
-#define LOOP while(ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0)
-
-typedef struct _COLOR_ {
+typedef struct COLOR_ {
 	unsigned int Red = 0;
 	unsigned int Green = 0;
 	unsigned int Blue = 0;

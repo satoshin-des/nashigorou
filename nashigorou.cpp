@@ -15,10 +15,10 @@ void nashigorou::DrawImage(const int x, const int y, const double aspect_ratio) 
 void nashigorou::DrawImage(const bool is_movable) {
 	if (is_movable) {
 		GetMousePoint(&m_x, &m_y);
-		DrawExtendGraph(m_x, m_y, 550, 450, m_nashigorou_img, TRUE);
+		DrawExtendGraph(m_x, m_y, WIDTH_X - 20, WIDTH_Y - 20, m_nashigorou_img, TRUE);
 	}
 	else {
-		DrawExtendGraph(m_x, m_y, 550, 450, m_nashigorou_img, TRUE);
+		DrawExtendGraph(m_x, m_y, WIDTH_X - 20, WIDTH_Y - 20, m_nashigorou_img, TRUE);
 	}
 }
 

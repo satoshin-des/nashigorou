@@ -21,19 +21,19 @@ int Title() {
 		SetFontSize(TITLE_FONT_SIZE);
 		DrawFormatString(10, 10, GetColor(0, 0, 0), TITLE);
 
-		start_button.Draw(100, 350, 250, 400);
+		start_button.Draw(150, WIDTH_Y - 150, 300, WIDTH_Y - 100);
 		start_button.Text("はじめる", 30, 13);
 		if (start_button.IsClick()) {
 			return START_SCREEN;
 		}
 
-		quit_button.Draw(400, 350, 550, 400);
+		quit_button.Draw(WIDTH_X - 300, WIDTH_Y - 150, WIDTH_X - 150, WIDTH_Y - 100);
 		quit_button.Text("おわる", 45, 13);
 		if (quit_button.IsClick()) {
 			return GAME_END;
 		}
 
-		credit_button.Draw(500, 420, 600, 470);
+		credit_button.Draw(WIDTH_X - 120, WIDTH_Y - 70, WIDTH_X - 20, WIDTH_Y - 20);
 		credit_button.Text("ｸﾚｼﾞｯﾄ", 20, 13);
 		if (credit_button.IsClick()) {
 			return CREDIT_SCREEN;
@@ -76,7 +76,7 @@ int MainGame() {
 		}
 
 		background.DrawBackGround();
-		sample_nashigorou.DrawImage(400, 0, r);
+		sample_nashigorou.DrawImage(WIDTH_X - 300, 0, r);
 		player_nashigorou.DrawImage(true);
 
 		DrawFormatString(0, 0, time_counter_color, "残り時間：%lf\n", 10.0 - time_counter / 60.0);
@@ -94,14 +94,14 @@ int MainGame() {
 		player_nashigorou.DrawImage(false);
 		player_nashigorou.DrawRatio(r);
 
-		repeat_button.Draw(100, 250, 250, 300);
+		repeat_button.Draw(150, WIDTH_Y - 150, 300, WIDTH_Y - 100);
 		repeat_button.Text("もう一度", 30, 13);
 		if (repeat_button.IsClick()) {
 			WaitTimer(500);
 			return REPEAT_GAME;
 		}
 
-		quit_button.Draw(100, 350, 250, 400);
+		quit_button.Draw(WIDTH_X - 300, WIDTH_Y - 150, WIDTH_X - 150, WIDTH_Y - 100);
 		quit_button.Text("おわる", 45, 13);
 		if (quit_button.IsClick()) {
 			WaitTimer(500);
@@ -130,7 +130,7 @@ int Credit() {
 		DrawFormatString(10, 50, GetColor(0, 0, 0), "\n\n\n\n　ひやめし様「GB音源「Hiyameshi-DMG」」");
 		DrawFormatString(10, 50, GetColor(0, 0, 0), "\n\n\n\n\n　URL: https://hiyameshi8bit.booth.pm/items/4710188");
 		
-		quit_button.Draw(325, 350, 475, 400);
+		quit_button.Draw(WIDTH_X - 300, WIDTH_Y - 150, WIDTH_X - 150, WIDTH_Y - 100);
 		quit_button.Text("タイトル", 45, 13);
 		if (quit_button.IsClick()) {
 			WaitTimer(500);

@@ -6,7 +6,9 @@
 
 #define TITLE "ÇËÇÒÇ≤ÇÎÇ§ÇÃî‰çáÇÌÇπÉQÅ[ÉÄ"
 
-#define RINGOROU_IMAGE_PATH "img/ringorou.png"
+// #define RINGOROU_IMAGE_PATH "img/ringorou.png"
+#define RINGOROU_IMAGE_PATH "img/nashigorou.png"
+
 #define TITLE_BGM "bgm/01.wav"
 #define GAME_BGM "bgm/02.wav"
 

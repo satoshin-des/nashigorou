@@ -1,7 +1,5 @@
 #include "nashigorou.h"
 
-#include <math.h>
-
 void nashigorou::LoadImage(const char* file_name) {
 	m_nashigorou_img = LoadGraph(file_name);
 	GetGraphSize(m_nashigorou_img, &m_width, &m_height);
@@ -26,10 +24,10 @@ void nashigorou::DecideCoordinate() {
 	GetMousePoint(&m_x, &m_y);
 }
 
-void nashigorou::DrawRatio(double aspect_ratio) {
+void nashigorou::DrawRatio(const double aspect_ratio) {
 	unsigned int text_color = GetColor(0, 0, 0);
 
-	double temp_similarity_rate1 = (fabs(WIDTH_X - 20 - m_x) / fabs(WIDTH_Y - 20 - m_y)) * aspect_ratio * 100, temp_similarity_rate2 = 10000.0 / temp_similarity_rate1;
+	double temp_similarity_rate1 = (std::abs(WIDTH_X - 20.0 - m_x) / std::abs(WIDTH_Y - 20.0 - m_y)) * aspect_ratio * 100, temp_similarity_rate2 = 10000.0 / temp_similarity_rate1;
 	double similarity_rate;
 	similarity_rate = temp_similarity_rate1 < temp_similarity_rate2 ? temp_similarity_rate1 : temp_similarity_rate2;
 	

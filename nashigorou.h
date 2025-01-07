@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 #include <DxLib.h>
 #include "core.h"
 
@@ -40,5 +42,5 @@ public:
 	/// Œ©–{‚Æ‚Ç‚Ì‚­‚ç‚¢”ä—¦‚ª‚ ‚Á‚Ä‚¢‚é‚©‚ÌŠ„‡‚ğ•`‰æ‚·‚é
 	/// </summary>
 	/// <param name="aspect_ratio">Œ©–{‚Ìc‰¡”ä</param>
-	void DrawRatio(double aspect_ratio);
+	void DrawRatio(const double aspect_ratio);
 };

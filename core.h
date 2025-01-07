@@ -44,4 +44,4 @@ typedef struct COLOR_ {
 /// <param name="g">—Î</param>
 /// <param name="b">Â</param>
 /// <returns></returns>
-COLOR ColorSet(unsigned int r, unsigned int g, unsigned int b);
+COLOR ColorSet(const unsigned int r, const unsigned int g, const unsigned int b);

@@ -50,12 +50,12 @@ int Title() {
 
 
 int MainGame() {
-	nashigorou sample_nashigorou;					// 見本のりんごろう
-	nashigorou player_nashigorou;						// 自機のりんごろう
+	nashigorou sample_nashigorou;			// 見本のりんごろう
+	nashigorou player_nashigorou;			// 自機のりんごろう
 	button quit_button;						// 終了ボタン
 	button repeat_button;					// もう一度ボタン
 	back_ground background;
-	double r;
+	double sample_aspect_ratio;
 	double time_counter;
 	unsigned int time_counter_color = GetColor(BLACK);
 	std::random_device seed_gen;
@@ -63,20 +63,16 @@ int MainGame() {
 	std::uniform_real_distribution<double> dist(0.2, 0.7);
 
 	time_counter = 0.0;
-	r = dist(engine);
+	sample_aspect_ratio = dist(engine);
 	sample_nashigorou.LoadImage(RINGOROU_IMAGE_PATH);
 	player_nashigorou.LoadImage(RINGOROU_IMAGE_PATH);
 
 	StopSoundFile();
 	PlaySoundFile(GAME_BGM, DX_PLAYTYPE_LOOP);
 
-	while(ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
-		if (time_counter >= 600) {
-			break;
-		}
-
+	while(ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && time_counter < 600) {
 		background.DrawBackGround();
-		sample_nashigorou.DrawImage(WIDTH_X - 300, 0, r);
+		sample_nashigorou.DrawImage(WIDTH_X - 300, 0, sample_aspect_ratio);
 		player_nashigorou.DrawImage(true);
 
 		DrawFormatString(0, 0, time_counter_color, "残り時間：%lf\n", 10.0 - time_counter / 60.0);
@@ -90,9 +86,9 @@ int MainGame() {
 
 	while(ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
 		background.DrawBackGround();
-		sample_nashigorou.DrawImage(WIDTH_X - 300, 0, r);
+		sample_nashigorou.DrawImage(WIDTH_X - 300, 0, sample_aspect_ratio);
 		player_nashigorou.DrawImage(false);
-		player_nashigorou.DrawRatio(r);
+		player_nashigorou.DrawRatio(sample_aspect_ratio);
 
 		repeat_button.Draw(150, WIDTH_Y - 150, 300, WIDTH_Y - 100);
 		repeat_button.Text("もう一度", 30, 13);
